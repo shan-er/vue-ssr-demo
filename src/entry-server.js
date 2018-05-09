@@ -1,5 +1,6 @@
 /**
- * Created by ayou on 18/1/25.
+ * @ 路由跳转
+ * @author shan-er
  */
 import { createApp } from './index.js'
 // 这里的 context 是服务端渲染模板时传入的
@@ -11,11 +12,6 @@ export default context => {
     const { app, router} = createApp()
 
     const { url } = context
-    // const { fullPath } = router.resolve(url).route
-
-    // if (fullPath !== url) {
-    //   return reject({ url: fullPath })
-    // }
 
     router.push(url)
 
