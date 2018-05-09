@@ -7,6 +7,7 @@ const config = require('./webpack.base');
 var webpack = require('webpack');
 var path = require('path');
 const url = require('url');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var devConfig = merge(config, {
     devtool: 'cheap-module-inline-source-map',
@@ -14,7 +15,7 @@ var devConfig = merge(config, {
         contentBase: path.resolve(__dirname, '../'),
         hot: true,
         historyApiFallback: true,
-        publicPath: '/release/',
+        // publicPath: '/release/',
         noInfo: false,
         proxy:[{
             context: ['/common/**'],
@@ -23,6 +24,11 @@ var devConfig = merge(config, {
         }]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.template.html',
+            inject: 'body'
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('develop')

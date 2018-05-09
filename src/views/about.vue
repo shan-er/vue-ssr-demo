@@ -22,11 +22,6 @@ export default {
     },
     methods: {
         getList() {
-            Http.post('/common/getList').then((res) => {
-                if(res.body.code == 1) {
-                    this.list = res.body.data || [];
-                }
-            });
         }
     },
     created() {

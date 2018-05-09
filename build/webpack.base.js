@@ -5,22 +5,22 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const vendorConfig = require('../release/dll/vendorConfig.json');
-const vendorManifest = require('../release/dll/vendor-manifest.json');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const extractSass = new ExtractTextPlugin({
     filename: 'assets/css/common-[hash].css',
     disable: process.env.NODE_ENV === "develop"
 });
 
+var env = process.env.NODE_ENV;
+
 var config = {
     entry: {
-        index: path.resolve(__dirname, "../src/index.js")
+        index: path.resolve(__dirname, "../src/entry-client.js")
     },
     output: {
         path: path.resolve(__dirname, '../release'),
-        publicPath: '/release/',
-        filename: 'js/[name]-[hash:8].js'
+        publicPath: '/',
+        filename: '[name].js'
     },
     module: {
         rules: [{
@@ -61,17 +61,12 @@ var config = {
     },
     plugins: [
         extractSass,
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-            inject: 'body',
-            bundleName: process.env.NODE_ENV == 'production' ? 'dll/' + vendorConfig.vendor.js : '/release/dll/' + vendorConfig.vendor.js
-        }),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: vendorManifest
+        new webpack.DefinePlugin({
+            DEV: env === 'develop' ? true : false
         })
     ]
 
 };
 
 module.exports = config;
+

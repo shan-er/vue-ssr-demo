@@ -6,6 +6,7 @@
             </li>
         </ol>
         <button @click="clickHander"><span v-html="getLogin"></span></button>
+        <span v-html="getLogin"></span>
     </div>
 </template>
 
@@ -26,11 +27,6 @@ export default {
     },
     methods: {
         clickHander() {
-            Http.post('/common/getLoginInfo').then((res) => {
-                if(res.body.code == 1) {
-                    this.getLogin = res.body.data && res.body.data.pin + ' 已登录';
-                }
-            });
         }
     }
 };

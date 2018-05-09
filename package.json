@@ -10,7 +10,10 @@
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "dll": "webpack --config build/webpack.dll.js",
     "dev": "cross-env NODE_ENV=develop webpack-dev-server --open --inline --config build/webpack.dev.js & nodemon --watch src/common/mockData.js node build/mockServer.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.js",
+    "server": "node server.js",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.js"
   },
   "author": "",
   "license": "ISC",
