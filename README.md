@@ -20,5 +20,17 @@
 ## 分支ssr-base
 不带请求的demo
 
+前端渲染：`npm run dev`
+服务器端渲染：
+   `npm run build:client`
+   `npm run build:server`
+   `npm run server`
+   
 ## 分支ssr-ajax
 带ajax请求的demo
+
+前端渲染：`npm run dev`
+服务器端渲染：
+   `npm run build:client`
+   `npm run build:server`
+   `npm run server`
