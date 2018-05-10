@@ -3,8 +3,8 @@
  * @author shan-er
  */
 
-import Vue from 'vue'
-import App from './app.vue'
+import Vue from 'vue';
+import App from './app.vue';
 import router from './routes.js';
 
 export function createApp () {
@@ -12,6 +12,6 @@ export function createApp () {
   const app = new Vue({
     router,
     render: h => h(App)
-  })
-  return { router, app }
+  });
+  return { router, app };
 }
