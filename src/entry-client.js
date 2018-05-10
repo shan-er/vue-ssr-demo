@@ -4,18 +4,17 @@
  */
 import Vue from 'vue';
 import {
-  createApp
+    createApp
 } from './index.js';
 // 客户端特定引导逻辑……
 const {
-  app,
-  router,
-  store
+    app,
+    router,
+    store
 } = createApp();
 if (window.__INITIAL_STATE__) {
-  store.replaceState(window.__INITIAL_STATE__);
+    store.replaceState(window.__INITIAL_STATE__);
 }
-
 Vue.mixin({
   beforeMount() {
     const { asyncData } = this.$options;
